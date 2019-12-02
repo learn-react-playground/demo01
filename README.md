@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## 简介
+
+1. 安装依赖: `yarn` 或者 `npm install`
+
+2. 运行项目: `yarn start` 或者 `npm run install`
+
+3. 编辑: 修改 `App.js` 文件
+
 ## Available Scripts
 
 In the project directory, you can run:
