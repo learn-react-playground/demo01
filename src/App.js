@@ -1,23 +1,72 @@
-import React, { useState } from 'react';
-import { Button, Icon } from 'antd';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from 'react-router-dom';
 import './App.css';
 
-const ButtonGroup = Button.Group;
 
 function App() {
-  const [count, setCount] = useState(0);
-  const step = 1;
-
   return (
     <div className="App">
-      <div>
-        <p>计数器数值：{count}</p>
-        <ButtonGroup>
-          <Button type="danger" onClick={() => setCount(count - step)}><Icon type="minus-circle" />计数器 -{`${step}`}</Button>
-          <Button type="primary" onClick={() => setCount(count + step)}><Icon type="plus-circle" />计数器 +{`${step}`}</Button>
-        </ButtonGroup>
-      </div>
+      <Router>
+        <Header />
+        <Main />
+        <Footer />
+      </Router>
     </div>
+  );
+}
+
+function Header() {
+  return (
+    <header>
+      <Link to="/">Home</Link>
+    </header>
+  );
+}
+
+function Main() {
+  return (
+    <Switch>
+      <Route path="/" exact>
+        <ArticleList />
+      </Route>
+      <Route path="/post/:title">
+        <Article />
+      </Route>
+    </Switch>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      footer
+    </footer>
+  );
+}
+
+function ArticleList() {
+  const titles = ['title1', 'title2'];
+  return (
+    <ul>
+      {
+        titles.map(title => (
+          <li key={title}><Link to={`/post/${title}`}>{title}</Link></li>
+        ))
+      }
+    </ul>
+  );
+}
+
+function Article() {
+  const { title } = useParams();
+  return (
+    <h3>{title}</h3>
   );
 }
 
