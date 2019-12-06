@@ -35,8 +35,11 @@ function Main() {
       <Route path="/" exact>
         <ArticleList />
       </Route>
-      <Route path="/post/:title">
-        <Article />
+      <Route path="/post/标题1">
+        <Article1 />
+      </Route>
+      <Route path="/post/标题2">
+        <Article2 />
       </Route>
     </Switch>
   );
@@ -54,19 +57,21 @@ function ArticleList() {
   const titles = ['title1', 'title2'];
   return (
     <ul>
-      {
-        titles.map(title => (
-          <li key={title}><Link to={`/post/${title}`}>{title}</Link></li>
-        ))
-      }
+      <li><Link to={`/post/标题1`}>第一篇文章的标题</Link></li>
+      <li><Link to={`/post/标题2`}>第二篇文章的标题</Link></li>
     </ul>
   );
 }
 
-function Article() {
-  const { title } = useParams();
+function Article1() {
   return (
-    <h3>{title}</h3>
+    <h3>第一篇文章</h3>
+  );
+}
+
+function Article2() {
+  return (
+    <h3>第二篇文章</h3>
   );
 }
 
